@@ -27,6 +27,13 @@ function M.create_rail_vectors(job, rails)
     group:AddTail(create_contour(rail.points, { x = 0.0, y = 0.0 }))
   end
 
+  local ok, rejoined = pcall(function()
+    return group:RejoinContours(0.001, true, true)
+  end)
+  if ok and rejoined and not rejoined.IsEmpty then
+    group = rejoined
+  end
+
   local cad_object = add_group_to_layer(job, group, "Celtic Weave Rails")
 
   return {
