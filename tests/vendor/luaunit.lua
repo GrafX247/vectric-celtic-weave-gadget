@@ -13,6 +13,63 @@ function luaunit.assertEquals(actual, expected)
   end
 end
 
+function luaunit.assertAlmostEquals(actual, expected, tolerance)
+  if math.abs(actual - expected) > tolerance then
+    error(
+      string.format(
+        "assertAlmostEquals failed: expected %s +/- %s, got %s",
+        tostring(expected),
+        tostring(tolerance),
+        tostring(actual)
+      ),
+      2
+    )
+  end
+end
+
+function luaunit.assertNil(actual)
+  if actual ~= nil then
+    error(
+      string.format("assertNil failed: expected nil, got %s", tostring(actual)),
+      2
+    )
+  end
+end
+
+function luaunit.assertTrue(actual)
+  if actual ~= true then
+    error(
+      string.format("assertTrue failed: expected true, got %s", tostring(actual)),
+      2
+    )
+  end
+end
+
+function luaunit.assertNotEquals(actual, expected)
+  if actual == expected then
+    error(
+      string.format(
+        "assertNotEquals failed: expected value different from %s",
+        tostring(expected)
+      ),
+      2
+    )
+  end
+end
+
+function luaunit.assertStrContains(actual, expected)
+  if type(actual) ~= "string" or not actual:find(expected, 1, true) then
+    error(
+      string.format(
+        "assertStrContains failed: expected %s to contain %s",
+        tostring(actual),
+        tostring(expected)
+      ),
+      2
+    )
+  end
+end
+
 local function run_test_case(name, case)
   local failures = 0
 

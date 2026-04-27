@@ -1,7 +1,7 @@
-package.path = package.path
-  .. ";./vectric-celtic-weave-gadget/src/?.lua"
+package.path = "./vectric-celtic-weave-gadget/src/?.lua"
   .. ";./vectric-celtic-weave-gadget/tests/vendor/?.lua"
   .. ";./vectric-celtic-weave-gadget/tests/?.lua"
+  .. ";" .. package.path
 
 local luaunit = require("luaunit")
 

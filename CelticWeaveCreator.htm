@@ -4,10 +4,91 @@
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <title>Celtic Weave Creator</title>
+  <style type="text/css">
+    body, td, th {
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 12px;
+    }
+    h1 {
+      font-size: 22px;
+      margin: 0 0 12px 0;
+    }
+    table {
+      border-collapse: collapse;
+      width: 100%;
+    }
+    td {
+      padding: 5px 6px;
+      vertical-align: middle;
+    }
+    .section-title {
+      font-weight: bold;
+      border-top: 1px solid #cccccc;
+      padding-top: 12px;
+    }
+    .FormButton {
+      font-weight: bold;
+      width: 100%;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 12px;
+    }
+    input[type="text"] {
+      width: 100%;
+    }
+  </style>
 </head>
 <body bgcolor="#efefef">
   <h1><span id="GadgetTitle">Celtic Weave Creator</span></h1>
-  <p>Version <span id="GadgetVersion">0.1.0</span></p>
-  <input class="FormButton" type="button" value="Close" id="CloseButton">
+
+  <table border="0">
+    <tr>
+      <td colspan="4" class="section-title">Panel</td>
+    </tr>
+    <tr>
+      <td>Face width</td>
+      <td><input type="text" id="FaceWidth"></td>
+      <td>Face height</td>
+      <td><input type="text" id="FaceHeight"></td>
+    </tr>
+    <tr>
+      <td>Border</td>
+      <td><input type="text" id="Border"></td>
+      <td>Columns</td>
+      <td><input type="text" id="Columns"></td>
+    </tr>
+    <tr>
+      <td>Rows</td>
+      <td><input type="text" id="Rows"></td>
+      <td colspan="2">
+        <input type="radio" id="RowMode_1" name="RowMode" value="1"> Auto
+        <input type="radio" id="RowMode_2" name="RowMode" value="2"> Fixed
+      </td>
+    </tr>
+    <tr>
+      <td colspan="4" class="section-title">Cross Section</td>
+    </tr>
+    <tr>
+      <td colspan="4">
+        <input type="radio" id="CrossSectionPreset_1" name="CrossSectionPreset" value="1"> None
+        <input type="radio" id="CrossSectionPreset_2" name="CrossSectionPreset" value="2"> Square
+        <input type="radio" id="CrossSectionPreset_3" name="CrossSectionPreset" value="3"> Fancy
+      </td>
+    </tr>
+    <tr>
+      <td>Profile width</td>
+      <td><input type="text" id="ProfileWidth"></td>
+      <td>Profile height</td>
+      <td><input type="text" id="ProfileHeight"></td>
+    </tr>
+    <tr>
+      <td colspan="4"><hr></td>
+    </tr>
+    <tr>
+      <td style="width: 25%"></td>
+      <td><input class="FormButton" type="button" value="Generate" id="ButtonOK"></td>
+      <td><input class="FormButton" type="button" value="Cancel" id="ButtonCancel"></td>
+      <td align="right">Version <span id="GadgetVersion">0.1.0</span></td>
+    </tr>
+  </table>
 </body>
 </html>
