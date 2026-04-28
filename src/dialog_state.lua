@@ -29,6 +29,10 @@ function M.from_dialog(dialog)
     state.cross_section_preset = "none"
   elseif preset_index == 2 then
     state.cross_section_preset = "square"
+  elseif preset_index == 3 then
+    state.cross_section_preset = "round"
+  elseif preset_index == 4 then
+    state.cross_section_preset = "oval"
   else
     state.cross_section_preset = "fancy"
   end

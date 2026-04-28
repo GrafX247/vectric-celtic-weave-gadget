@@ -45,6 +45,7 @@ function M.apply(job, state)
   end
 
   local rails = aspire_vectors.create_rail_vectors(job, preview.rails)
+  local border = aspire_vectors.create_border_guide(job, preview.solved)
   local section = aspire_vectors.create_cross_section(job, profile, {
     x = preview.solved.border + preview.solved.pattern_width + 20.0,
     y = preview.solved.border,
@@ -57,6 +58,7 @@ function M.apply(job, state)
   return {
     preview = preview,
     rails = rails,
+    border = border,
     cross_section = section,
   }
 end

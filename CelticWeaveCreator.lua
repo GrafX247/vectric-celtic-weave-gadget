@@ -24,7 +24,7 @@ function main(script_path)
   dialog:AddIntegerField("Columns", state.columns)
   dialog:AddRadioGroup("RowMode", 1)
   dialog:AddIntegerField("Rows", state.rows)
-  dialog:AddRadioGroup("CrossSectionPreset", 3)
+  dialog:AddRadioGroup("CrossSectionPreset", 5)
   dialog:AddDoubleField("ProfileWidth", state.profile_width)
   dialog:AddDoubleField("ProfileHeight", state.profile_height)
 
@@ -39,7 +39,7 @@ function main(script_path)
   end
 
   DisplayMessageBox(
-    "Created " .. result.rails.created .. " weave rail vectors."
+    "Created " .. result.rails.created .. " weave rail fragments. The rail group is selected for Aspire's Extrude and Weave tool."
   )
 
   return true

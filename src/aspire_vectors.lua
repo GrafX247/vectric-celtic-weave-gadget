@@ -20,6 +20,29 @@ local function add_group_to_layer(job, group, layer_name)
   return cad_object
 end
 
+local function select_only(job, cad_object)
+  if not job.Selection then
+    return
+  end
+
+  local ok = pcall(function()
+    job.Selection:Clear()
+    job.Selection:Add(cad_object, false, true)
+  end)
+
+  return ok
+end
+
+local function rectangle_points(x0, y0, width, height)
+  return {
+    { x = x0, y = y0 },
+    { x = x0 + width, y = y0 },
+    { x = x0 + width, y = y0 + height },
+    { x = x0, y = y0 + height },
+    { x = x0, y = y0 },
+  }
+end
+
 function M.create_rail_vectors(job, rails)
   local group = ContourGroup(true)
 
@@ -35,10 +58,29 @@ function M.create_rail_vectors(job, rails)
   end
 
   local cad_object = add_group_to_layer(job, group, "Celtic Weave Rails")
+  select_only(job, cad_object)
 
   return {
     created = #rails,
     group_name = "Celtic Weave Rails",
+    object_id = cad_object.Id,
+  }
+end
+
+function M.create_border_guide(job, solved)
+  local group = ContourGroup(true)
+  group:AddTail(create_contour(rectangle_points(
+    solved.border,
+    solved.border,
+    solved.pattern_width,
+    solved.pattern_height
+  ), { x = 0.0, y = 0.0 }))
+
+  local cad_object = add_group_to_layer(job, group, "Celtic Weave Border Guide")
+
+  return {
+    created = 1,
+    group_name = "Celtic Weave Border Guide",
     object_id = cad_object.Id,
   }
 end
